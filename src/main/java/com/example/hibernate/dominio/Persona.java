@@ -9,6 +9,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Table(name = "persona")
 public class Persona {
 
     @Id
@@ -32,6 +33,11 @@ public class Persona {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "id=" + id + ", nombre=" + nombre + '}';
     }
 
 }

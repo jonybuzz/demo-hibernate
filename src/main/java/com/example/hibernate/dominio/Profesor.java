@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Profesor extends Persona {
 
     private Double salario;
-
+    
     public Double getSalario() {
         return salario;
     }

@@ -8,9 +8,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Alumno extends Persona {
-    
+
     private Double promedio;
-    
+
     @OneToMany(mappedBy = "alumno")
     private List<Examen> examenes;
 
@@ -34,7 +34,7 @@ public class Alumno extends Persona {
     public void setExamenes(List<Examen> examenes) {
         this.examenes = examenes;
     }
-    
+
     public List<Curso> getCursos() {
         return cursos;
     }
