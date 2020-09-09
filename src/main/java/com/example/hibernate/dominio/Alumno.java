@@ -12,12 +12,14 @@ public class Alumno extends Persona {
     private Double promedio;
 
     @OneToMany(mappedBy = "alumno")
+//  Si la relación fuera unidireccional, hay que indicarle la
+//    columna dentro de tabla examen
+//    @JoinColumn(name = "alumno_id")
     private List<Examen> examenes;
 
     @ManyToMany
     @JoinTable(name = "persona_x_curso") //Opcional
     private List<Curso> cursos;
-
 
     public Double getPromedio() {
         return promedio;

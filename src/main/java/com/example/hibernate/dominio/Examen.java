@@ -1,6 +1,10 @@
 package com.example.hibernate.dominio;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -8,9 +12,13 @@ import javax.persistence.ManyToOne;
 public class Examen {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Integer nota;
+    
+    @Enumerated(EnumType.STRING) //Opcional. Por default, lo persiste como int
+    private Calificacion calificacion;
 
     @ManyToOne
     private Alumno alumno;
@@ -37,6 +45,14 @@ public class Examen {
 
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
+    }
+
+    public Calificacion getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(Calificacion calificacion) {
+        this.calificacion = calificacion;
     }
     
 }

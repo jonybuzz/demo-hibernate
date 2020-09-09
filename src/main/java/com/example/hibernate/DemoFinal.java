@@ -1,7 +1,9 @@
 package com.example.hibernate;
 
 import com.example.hibernate.dominio.Alumno;
+import com.example.hibernate.dominio.Calificacion;
 import com.example.hibernate.dominio.Curso;
+import com.example.hibernate.dominio.Examen;
 import com.example.hibernate.dominio.Persona;
 import com.example.hibernate.dominio.Profesor;
 import com.example.hibernate.utils.BDUtils;
@@ -39,6 +41,14 @@ public class DemoFinal {
 
         em.persist(julian);
 
+        //examen
+        Examen examenDeMarcos = new Examen();
+        examenDeMarcos.setAlumno(marcos);
+        examenDeMarcos.setCalificacion(Calificacion.BIEN);
+        examenDeMarcos.setNota(6);
+
+        em.persist(examenDeMarcos);
+        
         //JPQL Query
         List<Persona> personas = em
                 .createQuery("select p from Persona p where p.nombre = ?1")
