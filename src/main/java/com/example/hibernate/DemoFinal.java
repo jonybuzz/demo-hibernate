@@ -19,9 +19,14 @@ public class DemoFinal {
         EntityManager em = BDUtils.getEntityManager();
         BDUtils.comenzarTransaccion(em);
 
-        Alumno marcos = new Alumno();
-        //Insert
-        em.persist(marcos);
+//        try {
+            Alumno marcos = new Alumno();
+            //Insert
+            em.persist(marcos);
+//        } catch (Exception e) {
+//            BDUtils.rollback(em);
+//            return;
+//        }
 
         //Update
         marcos.setNombre("Marcos"); //Entidad administrada -> detecta cambios
@@ -48,13 +53,14 @@ public class DemoFinal {
         examenDeMarcos.setNota(6);
 
         em.persist(examenDeMarcos);
-        
+
         //JPQL Query
         List<Persona> personas = em
-                .createQuery("select p from Persona p where p.nombre = ?1")
+                // equivalente a: select * from persona where persona.nombre = 'Julian'
+                .createQuery("select p from Persona p where p.nombre = ?1", Persona.class) //ojo, query no tipada
                 .setParameter(1, "Julian")
                 .getResultList();
-        
+
         System.out.println(personas);
 
         //Delete

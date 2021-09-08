@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@Table(name = "persona")
+//@Table(name = "persona") //opcional
 public class Persona {
 
     @Id
@@ -18,7 +18,7 @@ public class Persona {
 
     private String nombre;
 
-    
+
     public Long getId() {
         return id;
     }

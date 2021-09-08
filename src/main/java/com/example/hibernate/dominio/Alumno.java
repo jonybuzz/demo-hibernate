@@ -5,9 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Alumno extends Persona {
+
+    @OneToOne
+    private Direccion direccion;
 
     private Double promedio;
 
@@ -20,6 +24,15 @@ public class Alumno extends Persona {
     @ManyToMany
     @JoinTable(name = "persona_x_curso") //Opcional
     private List<Curso> cursos;
+
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
 
     public Double getPromedio() {
         return promedio;
